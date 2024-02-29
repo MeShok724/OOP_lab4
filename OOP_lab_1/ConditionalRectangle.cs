@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace OOP_lab_1
 {
     public class ConditionalRectangle
     {

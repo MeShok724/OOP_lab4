@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace OOP_lab_1
 {
     partial class Form1
     {
@@ -34,9 +34,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(920, 31);
+            this.button1.Location = new System.Drawing.Point(1041, 34);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(139, 49);
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -46,7 +46,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1247, 866);
+            this.ClientSize = new System.Drawing.Size(1978, 1344);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
