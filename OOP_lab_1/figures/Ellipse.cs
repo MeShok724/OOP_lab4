@@ -2,7 +2,7 @@
 
 namespace OOP_lab_1
 {
-    public class Oval : DisplayObject
+    public class Ellipse : DisplayObject
     {
         private readonly int _radiusX;
         private readonly int _radiusY;
@@ -18,7 +18,7 @@ namespace OOP_lab_1
             }
         }
         
-        public Oval(Point pos, Color fillColor, Color borderColor, int borderSize, int rx, int ry) : base(pos, fillColor, borderColor, borderSize)
+        public Ellipse(Point pos, Color fillColor, Color borderColor, int borderSize, int rx, int ry) : base(pos, fillColor, borderColor, borderSize)
         {
             condRect.posStart.x = pos.X - rx - _borderSize;
             condRect.posStart.y = pos.Y - ry - _borderSize;
