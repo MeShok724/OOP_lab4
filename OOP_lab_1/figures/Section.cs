@@ -4,7 +4,7 @@ namespace OOP_lab_1
 {
     public class Section : DisplayObject
     {
-        private readonly MyPoint _posEnd = new MyPoint();
+        private readonly Point _posEnd = new Point();
         private readonly int _width;
         override public void Draw(Graphics g)
         {
@@ -12,18 +12,18 @@ namespace OOP_lab_1
             {
                 using (var pen1 = new Pen(_fillColor, _width))
                 {
-                    g.DrawLine(pen, _pos.x, _pos.y, _posEnd.x, _posEnd.y);
-                    g.DrawLine(pen1,_pos.x, _pos.y, _posEnd.x, _posEnd.y);
+                    g.DrawLine(pen, _pos, _posEnd);
+                    g.DrawLine(pen1,_pos, _posEnd);
                 }
             }
         }
         
-        public Section(MyPoint pos, Color fillColor, Color borderColor, int borderSize, MyPoint posEnd, int width) : base(pos, fillColor, borderColor, borderSize)
+        public Section(Point pos, Color fillColor, Color borderColor, int borderSize, Point posEnd, int width) : base(pos, fillColor, borderColor, borderSize)
         {
-            condRect.posStart.x = pos.x;
-            condRect.posStart.y = pos.y;
-            condRect.posEnd.x = posEnd.x;
-            condRect.posEnd.y = posEnd.y;
+            condRect.posStart.x = pos.X;
+            condRect.posStart.y = pos.Y;
+            condRect.posEnd.x = posEnd.X;
+            condRect.posEnd.y = posEnd.Y;
             _posEnd = posEnd;
             _width = width;
         }

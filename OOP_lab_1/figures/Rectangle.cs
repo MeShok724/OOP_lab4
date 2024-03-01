@@ -12,20 +12,20 @@ namespace OOP_lab_1
             {
                 using (var brush = new SolidBrush(_fillColor))
                 {
-                    g.DrawRectangle(pen, _pos.x, _pos.y, _width, _height);
-                    g.FillRectangle(brush, _pos.x, _pos.y, _width, _height);
+                    g.DrawRectangle(pen, _pos.X, _pos.Y, _width, _height);
+                    g.FillRectangle(brush, _pos.X, _pos.Y, _width, _height);
                 }
             }
         }
         
-        public Rectangle(MyPoint pos, Color fillColor, Color borderColor, int borderSize, int width, int height) : base(pos, fillColor, borderColor, borderSize)
+        public Rectangle(Point pos, Color fillColor, Color borderColor, int borderSize, int width, int height) : base(pos, fillColor, borderColor, borderSize)
         {
-            condRect.posStart.x = pos.x - _borderSize;
-            condRect.posStart.y = pos.y - _borderSize;
+            condRect.posStart.x = pos.X - _borderSize;
+            condRect.posStart.y = pos.Y - _borderSize;
             _width = width;
             _height = height;
-            condRect.posEnd.x = pos.x + width + _borderSize;
-            condRect.posEnd.y = pos.y + height + _borderSize;
+            condRect.posEnd.x = pos.X + width + _borderSize;
+            condRect.posEnd.y = pos.Y + height + _borderSize;
         }
     }
 }

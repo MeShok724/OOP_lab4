@@ -54,6 +54,7 @@
         <Compile Include="figures\Oval.cs" />
         <Compile Include="figures\Rectangle.cs" />
         <Compile Include="figures\Section.cs" />
+        <Compile Include="figures\Triangle.cs" />
         <Compile Include="Form1.cs">
             <SubType>Form</SubType>
         </Compile>

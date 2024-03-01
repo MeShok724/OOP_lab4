@@ -11,19 +11,19 @@ namespace OOP_lab_1
             {
                 using (var brush = new SolidBrush(_fillColor))
                 {
-                    g.DrawEllipse(pen, _pos.x-_radius, _pos.y-_radius, _radius*2, _radius*2);
-                    g.FillEllipse(brush, _pos.x-_radius, _pos.y-_radius, _radius*2, _radius*2);
+                    g.DrawEllipse(pen, _pos.X-_radius, _pos.Y-_radius, _radius*2, _radius*2);
+                    g.FillEllipse(brush, _pos.X-_radius, _pos.Y-_radius, _radius*2, _radius*2);
                 }
             }
         }
         
-        public Circle(MyPoint pos, Color fillColor, Color borderColor, int borderSize, int radius) : base(pos, fillColor, borderColor, borderSize)
+        public Circle(Point pos, Color fillColor, Color borderColor, int borderSize, int radius) : base(pos, fillColor, borderColor, borderSize)
         {
             _radius = radius;
-            condRect.posStart.x = pos.x - radius - _borderSize;
-            condRect.posStart.y = pos.y - radius - _borderSize;
-            condRect.posEnd.x = pos.x + radius + _borderSize;
-            condRect.posEnd.y = pos.y + radius + _borderSize;
+            condRect.posStart.x = pos.X - radius - _borderSize;
+            condRect.posStart.y = pos.Y - radius - _borderSize;
+            condRect.posEnd.x = pos.X + radius + _borderSize;
+            condRect.posEnd.y = pos.Y + radius + _borderSize;
         }
     }
 }
