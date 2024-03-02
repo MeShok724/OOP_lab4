@@ -19,15 +19,7 @@ namespace OOP_lab_1
             Random rand = new Random();
             Point point = new Point();
             
-            for (int i = 0; i < 10; i++)
-            {
-                point.X = rand.Next(20, 1400);
-                point.Y = rand.Next(20, 600);
-                Section f1 = new Section(point, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
-                    Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)), rand.Next(1, 5),
-                    new Point(rand.Next(50, 1300), rand.Next(50, 500)), rand.Next(1,10));
-                f1.Draw(g);
-            }
+            
             
             for (int i = 0; i < 10; i++)
             {
@@ -94,6 +86,15 @@ namespace OOP_lab_1
                 Rectangle f1 = new Rectangle(point, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
                     Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)), rand.Next(1, 10),
                     rand.Next(10,100), rand.Next(10,100));
+                f1.Draw(g);
+            }
+            for (int i = 0; i < 10; i++)
+            {
+                point.X = rand.Next(20, 1400);
+                point.Y = rand.Next(20, 600);
+                Section f1 = new Section(point, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
+                    Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)), rand.Next(1, 5),
+                    new Point(rand.Next(50, 1300), rand.Next(50, 500)), rand.Next(1, 10));
                 f1.Draw(g);
             }
             // Circle figure1 = new Circle(point, Color.Blue, Color.Red, 10, 50);
