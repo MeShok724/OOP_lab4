@@ -4,28 +4,28 @@ namespace OOP_lab_1
 {
     public class Ellipse : DisplayObject
     {
-        private readonly int _radiusX;
-        private readonly int _radiusY;
+        private readonly int _rX;
+        private readonly int _rY;
         override public void Draw(Graphics g)
         {
-            using (var pen = new Pen(_borderColor, _borderSize * 2))
+            using (var pen = new Pen(_borderColor, _borderSize))
             {
                 using (var brush = new SolidBrush(_fillColor))
                 {
-                    g.DrawEllipse(pen, _pos.X-_radiusX, _pos.Y-_radiusY, _radiusX*2, _radiusY*2);
-                    g.FillEllipse(brush, _pos.X-_radiusX, _pos.Y-_radiusY, _radiusX*2, _radiusY*2);
+                    g.FillEllipse(brush, _X1-_rX, _Y1-_rY, _rX*2, _rY*2);
+                    g.DrawEllipse(pen, _X1-_rX, _Y1-_rY, _rX*2, _rY*2);
                 }
             }
         }
         
-        public Ellipse(Point pos, Color fillColor, Color borderColor, int borderSize, int rx, int ry) : base(pos, fillColor, borderColor, borderSize)
+        public Ellipse(int x1, int y1, Color fillColor, Color borderColor, int borderSize, int rx, int ry) : base(x1, y1, fillColor, borderColor, borderSize)
         {
-            condRect.posStart.x = pos.X - rx - _borderSize;
-            condRect.posStart.y = pos.Y - ry - _borderSize;
-            condRect.posEnd.x = pos.X + rx + _borderSize;
-            condRect.posEnd.y = pos.Y + ry + _borderSize;
-            _radiusX = rx;
-            _radiusY = ry;
+            _rX = rx;
+            _rY = ry;
+            _rectX1 = _X1 - _rX - borderSize / 2;
+            _rectY1 = _Y1 - _rY - borderSize / 2;
+            _rectX2 = _X1 + _rX + borderSize / 2;
+            _rectY2 = _Y1 + _rY + borderSize / 2;
         }
     }
 }

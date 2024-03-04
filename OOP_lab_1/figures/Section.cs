@@ -5,58 +5,54 @@ namespace OOP_lab_1
 {
     public class Section : DisplayObject
     {
-        private readonly Point _posEnd = new Point();
+        private readonly int _X2;
+        private readonly int _Y2;
+        private int _diffX;
+        private int _diffY;
         private readonly int _width;
-        private Point _posFillStart = new Point();
-        private Point _posFillEnd = new Point();
 
         override public void Draw(Graphics g)
         {
-            using (var pen = new Pen(_borderColor, _borderSize * 2 + _width))
+            using (var pen = new Pen(_borderColor, _borderSize + _width))
             {
-                using (var penFill = new Pen(_fillColor, _width))
+                using (var penFill = new Pen(_fillColor, _width - _borderSize))
                 {
-                    g.DrawLine(pen, _pos, _posEnd);
-                    g.DrawLine(penFill,_posFillStart, _posFillEnd);
+                    g.DrawLine(pen, _X1, _Y1, _X2, _Y2);
+                    g.DrawLine(penFill,_X1 + _diffX, _Y1 + _diffY, _X2 - _diffX, _Y2 - _diffY);
                 }
             }
         }
 
-        private void FindFillPoint()
+        private void FindDiff()
         {
-            double dist = Math.Sqrt(Math.Pow(_posEnd.X - _pos.X, 2) + Math.Pow(_posEnd.Y - _pos.Y, 2));
+            double dist = Math.Sqrt(Math.Pow(_X2 - _X1, 2) + Math.Pow(_Y2 - _Y1, 2));
             double k = Math.Round(dist / _borderSize);
-            int diffX = (int)Math.Round((_posEnd.X - _pos.X) / k);
-            int diffY = (int)Math.Round((_posEnd.Y - _pos.Y) / k);
-            diffX = Math.Abs(diffX);
-            diffY = Math.Abs(diffY);
-            if (_posEnd.X - _pos.X >= 0)
+            _diffX = (int)Math.Round((_X2 - _X1) / k);
+            _diffY = (int)Math.Round((_Y2 - _Y1) / k);
+            
+            //?
+            _diffX = Math.Abs(_diffX);
+            _diffY = Math.Abs(_diffY);
+            if (_X2 - _X1 < 0)
             {
-                _posFillStart.X = _pos.X + diffX;
-                _posFillEnd.X = _posEnd.X - diffX;
-            } else {
-                _posFillStart.X = _pos.X - diffX;
-                _posFillEnd.X = _posEnd.X + diffX;
-            }
-            if (_posEnd.Y - _pos.Y >= 0)
+                _diffX = -_diffX;
+            } 
+            if (_Y2 - _Y1 < 0)
             {
-                _posFillStart.Y = _pos.Y + diffY;
-                _posFillEnd.Y = _posEnd.Y - diffY;
-            } else {
-                _posFillStart.Y = _pos.Y - diffY;
-                _posFillEnd.Y = _posEnd.Y + diffY;
+                _diffY = -_diffY;
             }
         }
         
-        public Section(Point pos, Color fillColor, Color borderColor, int borderSize, Point posEnd, int width) : base(pos, fillColor, borderColor, borderSize)
+        public Section(int x1, int y1, Color fillColor, Color borderColor, int borderSize, int x2, int y2, int width) : base(x1, y1, fillColor, borderColor, borderSize)
         {
-            condRect.posStart.x = pos.X;
-            condRect.posStart.y = pos.Y;
-            condRect.posEnd.x = posEnd.X;
-            condRect.posEnd.y = posEnd.Y;
-            _posEnd = posEnd;
+            _X2 = x2;
+            _Y2 = y2;
+            _rectX1 = Math.Min(_X1, _X2) - borderSize / 2;
+            _rectY1 = Math.Min(_Y1, _Y2) - borderSize / 2;
+            _rectX2 = Math.Max(_X1, _X2) + borderSize / 2;
+            _rectY2 = Math.Max(_Y1, _Y2) + borderSize / 2;
             _width = width;
-            FindFillPoint();
+            FindDiff();
         }
     }
 }

@@ -4,28 +4,32 @@ namespace OOP_lab_1
 {
     public class IsoscelesTriangle : DisplayObject
     {
-        private readonly int _width;
-        private readonly int _height;
+        private readonly int _X2;
+        private readonly int _Y2;
+        private readonly int _X3;
+        private readonly int _Y3;
         override public void Draw(Graphics g)
         {
-            using (var pen = new Pen(_borderColor, _borderSize * 2))
+            using (var pen = new Pen(_borderColor, _borderSize))
             {
                 using (var brush = new SolidBrush(_fillColor))
                 {
-                    g.DrawPolygon(pen, new []{ new Point(_pos.X + _width/2, _pos.Y), new Point(_pos.X, _pos.Y + _height), new Point(_pos.X + _width, _pos.Y + _height) });
-                    g.FillPolygon(brush,new []{ new Point(_pos.X + _width/2, _pos.Y), new Point(_pos.X, _pos.Y + _height), new Point(_pos.X + _width, _pos.Y + _height) });
+                    g.FillPolygon(brush,new []{ new Point(_X1, _Y1), new Point(_X2, _Y2), new Point(_X3, _Y3) });
+                    g.DrawPolygon(pen, new []{ new Point(_X1, _Y1), new Point(_X2, _Y2), new Point(_X3, _Y3) });
                 }
             }
         }
         
-        public IsoscelesTriangle(Point pos, Color fillColor, Color borderColor, int borderSize, int width, int height) : base(pos, fillColor, borderColor, borderSize)
+        public IsoscelesTriangle(int x1, int y1, Color fillColor, Color borderColor, int borderSize, int width, int height) : base(x1, y1, fillColor, borderColor, borderSize)
         {
-            condRect.posStart.x = pos.X - _borderSize;
-            condRect.posStart.y = pos.Y - _borderSize;
-            condRect.posEnd.x = pos.X + width + _borderSize;
-            condRect.posEnd.y = pos.Y + height + _borderSize;
-            _width = width;
-            _height = height;
+            _rectX1 = _X1 - width / 2 - borderSize / 2;
+            _rectY1 = _Y1 - borderSize / 2;
+            _rectX2 = _X1 + width / 2 + borderSize / 2;
+            _rectY2 = _Y1 + height + borderSize / 2;
+            _X2 = _X1 - width / 2;
+            _X3 = _X1 + width / 2;
+            _Y2 = _Y1 + height;
+            _Y3 = _Y2;
         }
     }
 }

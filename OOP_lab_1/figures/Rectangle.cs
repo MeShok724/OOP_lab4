@@ -4,28 +4,28 @@ namespace OOP_lab_1
 {
     public class Rectangle : DisplayObject
     {
-        private readonly int _width;
-        private readonly int _height;
+        private readonly int _X2;
+        private readonly int _Y2;
         override public void Draw(Graphics g)
         {
-            using (var pen = new Pen(_borderColor, _borderSize*2))
+            using (var pen = new Pen(_borderColor, _borderSize))
             {
                 using (var brush = new SolidBrush(_fillColor))
                 {
-                    g.DrawRectangle(pen, _pos.X, _pos.Y, _width, _height);
-                    g.FillRectangle(brush, _pos.X, _pos.Y, _width, _height);
+                    g.FillRectangle(brush, _X1, _Y1, _X2 - _X1, _Y2 - _Y1);
+                    g.DrawRectangle(pen, _X1, _Y1, _X2 - _X1, _Y2 - _Y1);
                 }
             }
         }
         
-        public Rectangle(Point pos, Color fillColor, Color borderColor, int borderSize, int width, int height) : base(pos, fillColor, borderColor, borderSize)
+        public Rectangle(int x1, int y1, Color fillColor, Color borderColor, int borderSize, int width, int height) : base(x1, y1, fillColor, borderColor, borderSize)
         {
-            condRect.posStart.x = pos.X - _borderSize;
-            condRect.posStart.y = pos.Y - _borderSize;
-            _width = width;
-            _height = height;
-            condRect.posEnd.x = pos.X + width + _borderSize;
-            condRect.posEnd.y = pos.Y + height + _borderSize;
+            _X2 = _X1 + width;
+            _Y2 = _Y1 + height;
+            _rectX1 = _X1 - borderSize / 2;
+            _rectY1 = _Y1 - borderSize / 2;
+            _rectX2 = _X2 + borderSize / 2;
+            _rectY2 = _Y2 + borderSize / 2;
         }
     }
 }

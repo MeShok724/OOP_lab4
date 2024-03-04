@@ -7,93 +7,104 @@ namespace OOP_lab_1
     public partial class FormMain : Form
     {
         public Graphics g;
+        
         public FormMain()
         {
             InitializeComponent();
-            Width = 1500;
-            Height = 800;
         }
 
         public DisplayObject[] GenerateObjects()
         {
-            DisplayObject[] objectArr = new DisplayObject[10*8];
+            DisplayObject[] objectArr = new DisplayObject[10*8 + 1];
             int index = 0;
             Random rand = new Random();
-            Point point = new Point();
+            int x;
+            int y;
             
+            const int minX = 20;
+            const int minY = 20;
+            const int maxX = 1000;
+            const int maxY = 600;
+            const int minB = 1;
+            const int maxB = 10;
+
+            DrawField drawField = new DrawField(10, 10, Color.White, Color.White, 10, 1000, 600);
+            objectArr[index++] = drawField;
             for (int i = 0; i < 10; i++)
             {
-                point.X = rand.Next(20, 1400);
-                point.Y = rand.Next(20, 600);
-                Section f1 = new Section(point, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
-                    Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)), rand.Next(1, 5),
-                    new Point(rand.Next(50, 1300), rand.Next(50, 500)), rand.Next(1, 10));
+                x = rand.Next(minX, maxX);
+                y = rand.Next(minY, maxY);
+                int x2 = rand.Next(minX, maxX);
+                int y2 = rand.Next(minY, maxY);
+                Section f1 = new Section(x, y, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
+                    Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)), rand.Next(minB, maxB),
+                    x2, y2, rand.Next(1, 10));
                 objectArr[index++] = f1;
             }
             
             for (int i = 0; i < 10; i++)
             {
-                point.X = rand.Next(150, 1300);
-                point.Y = rand.Next(150, 500);
-                int pMinX = point.X - 100;
-                int pMaxX = point.X + 100;
-                int pMinY = point.Y - 100;
-                int pMaxY = point.Y + 100;
-                Triangle f1 = new Triangle(point, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
+                x = rand.Next(minX, maxX);
+                y = rand.Next(minY, maxY);
+                int pMinX = x - 100;
+                int pMaxX = x + 100;
+                int pMinY = y - 100;
+                int pMaxY = y + 100;
+                Triangle f1 = new Triangle(x, y, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
                     Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)), rand.Next(1, 10),
-                    new Point(rand.Next(pMinX, pMaxX), rand.Next(pMinY, pMaxY)), new Point(rand.Next(pMinX, pMaxX), rand.Next(pMinY, pMaxY)));
+                    rand.Next(pMinX, pMaxX), rand.Next(pMinY, pMaxY), rand.Next(pMinX, pMaxX), rand.Next(pMinY, pMaxY));
                 objectArr[index++] = f1;
             }
             for (int i = 0; i < 10; i++)
             {
-                point.X = rand.Next(110, 1300);
-                point.Y = rand.Next(110, 600);
-                Circle f1 = new Circle(point, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
+                x = rand.Next(minX, maxX);
+                y = rand.Next(minY, maxY);
+                Circle f1 = new Circle(x, y, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
                     Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)), rand.Next(1, 10),
                     rand.Next(10, 100));
                 objectArr[index++] = f1;
             }
             for (int i = 0; i < 10; i++)
             {
-                point.X = rand.Next(20, 1300);
-                point.Y = rand.Next(20, 600);
-                Square f1 = new Square(point, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
+                x = rand.Next(minX, maxX);
+                y = rand.Next(minY, maxY);
+                Square f1 = new Square(x, y, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
                     Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)), rand.Next(1, 10),
                     rand.Next(10, 100));
                 objectArr[index++] = f1;
             }
             for (int i = 0; i < 10; i++)
             {
-                point.X = rand.Next(110, 1300);
-                point.Y = rand.Next(110, 600);
-                Ellipse f1 = new Ellipse(point, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
+                x = rand.Next(minX, maxX);
+                y = rand.Next(minY, maxY);
+                Ellipse f1 = new Ellipse(x, y, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
                     Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)), rand.Next(1, 10),
                     rand.Next(10, 100), rand.Next(10,100));
                 objectArr[index++] = f1;
             }
             for (int i = 0; i < 10; i++)
             {
-                point.X = rand.Next(60, 1300);
-                point.Y = rand.Next(60, 600);
-                IsoscelesTriangle f1 = new IsoscelesTriangle(point, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
+                x = rand.Next(minX, maxX);
+                y = rand.Next(minY, maxY);
+                IsoscelesTriangle f1 = new IsoscelesTriangle(x, y, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
                     Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)), rand.Next(1, 10),
                     rand.Next(10,100), rand.Next(10,100));
                 objectArr[index++] = f1;
             }
             for (int i = 0; i < 10; i++)
             {
-                point.X = rand.Next(20, 1300);
-                point.Y = rand.Next(20, 600);
-                EquilateralTriangle f1 = new EquilateralTriangle(point, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
+                x = rand.Next(minX, maxX);
+                y = rand.Next(minY, maxY);
+                EquilateralTriangle f1 = new EquilateralTriangle(x, y, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
                     Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)), rand.Next(1, 10),
                     rand.Next(10,100));
                 objectArr[index++] = f1;
             }
             for (int i = 0; i < 10; i++)
             {
-                point.X = rand.Next(20, 1300);
-                point.Y = rand.Next(20, 600);
-                Rectangle f1 = new Rectangle(point, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
+                x = rand.Next(minX, maxX);
+                y = rand.Next(minY, maxY);
+                Rectangle f1 = new Rectangle(x, y, Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)),
                     Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255)), rand.Next(1, 10),
                     rand.Next(10,100), rand.Next(10,100));
                 objectArr[index++] = f1;

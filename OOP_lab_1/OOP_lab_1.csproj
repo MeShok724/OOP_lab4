@@ -46,8 +46,8 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="ConditionalRectangle.cs" />
         <Compile Include="DisplayObject.cs" />
+        <Compile Include="DrawField.cs" />
         <Compile Include="figures\Circle.cs" />
         <Compile Include="figures\EquilateralTriangle.cs" />
         <Compile Include="figures\IsoscelesTriangle.cs" />
