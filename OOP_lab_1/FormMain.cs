@@ -7,7 +7,6 @@ namespace OOP_lab_1
     public partial class FormMain : Form
     {
         public Graphics g;
-        private PictureBox pb = new PictureBox();
         
         public FormMain()
         {
@@ -129,12 +128,6 @@ namespace OOP_lab_1
             DisplayObject[] objects = GenerateObjects();
             DrawObjects(objects, g);
         }
-
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-            // MinimumSize = new Size(1200, 800);
-            // MaximumSize = new Size(1200, 800);
-            // Size = new Size(1200, 800);
-        }
+        
     }
 }
