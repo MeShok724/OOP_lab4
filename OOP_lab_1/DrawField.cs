@@ -8,7 +8,17 @@ namespace OOP_lab_1
     {
         private readonly int _X2;
         private readonly int _Y2;
-
+        public override void Draw(Graphics g)
+        {
+            using (var brush = new SolidBrush(_fillColor))
+            {
+                using (var pen = new Pen(_borderColor, _borderSize))
+                {
+                    g.FillRectangle(brush, _X1, _Y1, _X2 - _X1, _Y2 - _Y1);
+                    g.DrawRectangle(pen, _X1, _Y1, _X2 - _X1, _Y2 - _Y1);
+                }
+            }
+        }
         public DrawField(int X1, int Y1, Color fillColor, Color borderColor, int borderSize, int width, int heigth) : base(X1, Y1, fillColor, borderColor, borderSize)
         {
             _X2 = X1 + width;
@@ -17,18 +27,6 @@ namespace OOP_lab_1
             _rectY1 = _Y1 - borderSize / 2;
             _rectX2 = _X2 + borderSize / 2;
             _rectY2 = _Y2 + borderSize / 2;
-        }
-
-        public override void Draw(Graphics g)
-        {
-            using (var pen = new Pen(_borderColor, _borderSize))
-            {
-                using (var brush = new SolidBrush(_fillColor))
-                {
-                    g.FillRectangle(brush, _X1, _Y1, _X2 - _X1, _Y2 - _Y1);
-                    g.DrawRectangle(pen, _X1, _Y1, _X2 - _X1, _Y2 - _Y2);
-                }
-            }
         }
     }
 }

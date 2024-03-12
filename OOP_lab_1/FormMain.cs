@@ -7,6 +7,7 @@ namespace OOP_lab_1
     public partial class FormMain : Form
     {
         public Graphics g;
+        private PictureBox pb = new PictureBox();
         
         public FormMain()
         {
@@ -23,12 +24,12 @@ namespace OOP_lab_1
             
             const int minX = 20;
             const int minY = 20;
-            const int maxX = 1000;
-            const int maxY = 600;
+            const int maxX = 1100;
+            const int maxY = 700;
             const int minB = 1;
             const int maxB = 10;
 
-            DrawField drawField = new DrawField(10, 10, Color.White, Color.White, 10, 1000, 600);
+            DrawField drawField = new DrawField(10, 10, Color.White, Color.White, 0, 1158, 724);
             objectArr[index++] = drawField;
             for (int i = 0; i < 10; i++)
             {
@@ -127,6 +128,13 @@ namespace OOP_lab_1
             g.Clear(Color.White);
             DisplayObject[] objects = GenerateObjects();
             DrawObjects(objects, g);
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            // MinimumSize = new Size(1200, 800);
+            // MaximumSize = new Size(1200, 800);
+            // Size = new Size(1200, 800);
         }
     }
 }

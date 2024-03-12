@@ -38,21 +38,22 @@
             this.pbDrawField.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbDrawField.Location = new System.Drawing.Point(0, 0);
             this.pbDrawField.Name = "pbDrawField";
-            this.pbDrawField.Size = new System.Drawing.Size(2536, 1322);
+            this.pbDrawField.Size = new System.Drawing.Size(1178, 744);
             this.pbDrawField.TabIndex = 0;
             this.pbDrawField.TabStop = false;
             this.pbDrawField.Click += new System.EventHandler(this.pbDrawField_Click);
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2536, 1322);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(1178, 744);
             this.Controls.Add(this.pbDrawField);
-            this.MinimumSize = new System.Drawing.Size(2558, 1378);
+            this.MaximumSize = new System.Drawing.Size(1200, 800);
+            this.MinimumSize = new System.Drawing.Size(1200, 800);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbDrawField)).EndInit();
             this.ResumeLayout(false);
         }
