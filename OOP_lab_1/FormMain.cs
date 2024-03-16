@@ -128,6 +128,5 @@ namespace OOP_lab_1
             DisplayObject[] objects = GenerateObjects();
             DrawObjects(objects, g);
         }
-        
     }
 }
