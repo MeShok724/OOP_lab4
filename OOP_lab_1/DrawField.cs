@@ -28,5 +28,10 @@ namespace OOP_lab_1
             _rectX2 = _X2 + borderSize / 2;
             _rectY2 = _Y2 + borderSize / 2;
         }
+
+        public (int, int, int, int) GetCords()
+        {
+            return (_X1, _Y1, _X2, _Y2);
+        }
     }
 }
