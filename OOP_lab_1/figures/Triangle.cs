@@ -5,16 +5,16 @@ namespace OOP_lab_1
 {
     public class Triangle : DisplayObject
     {
-        private readonly int _X2;
-        private readonly int _Y2;
-        private readonly int _X3;
-        private readonly int _Y3;
+        private int _X3;
+        private int _Y3;
         
         override public void Draw(Graphics g)
         {
-            using (var pen = new Pen(_borderColor, _borderSize))
+            Color fillColor = Color.FromArgb(_fillColor[0], _fillColor[1], _fillColor[2]);
+            Color borderColor = Color.FromArgb(_borderColor[0], _borderColor[1], _borderColor[2]);
+            using (var pen = new Pen(borderColor, _borderSize))
             {
-                using (var brush = new SolidBrush(_fillColor))
+                using (var brush = new SolidBrush(fillColor))
                 {
                     g.FillPolygon(brush, new Point[] {new Point(_X1, _Y1), new Point(_X2, _Y2), new Point(_X3, _Y3)});
                     g.DrawPolygon(pen, new Point[] {new Point(_X1, _Y1), new Point(_X2, _Y2), new Point(_X3, _Y3)});
@@ -22,7 +22,7 @@ namespace OOP_lab_1
             }
         }
         
-        public Triangle(int x1, int y1, Color fillColor, Color borderColor, int borderSize, int x2, int y2, int x3, int y3) : base(x1, y1, fillColor, borderColor, borderSize)
+        public Triangle(int X, int Y, int x1, int y1, int[] fillColor, int[] borderColor, int borderSize, int x2, int y2, int x3, int y3) : base(X, Y, x1, y1, fillColor, borderColor, borderSize)
         {
             _X2 = x2;
             _Y2 = y2;
@@ -34,10 +34,34 @@ namespace OOP_lab_1
             int minY = Math.Min(Math.Min(_Y1, _Y2), _Y3);
             int maxY = Math.Max(Math.Max(_Y1, _Y2), _Y3);
             
-            _rectX1 = minX - borderSize / 2;
-            _rectY1 = minY - borderSize / 2;
-            _rectX2 = maxX + borderSize / 2;
-            _rectY2 = maxY + borderSize / 2;
+            _outRectX1 = minX - borderSize / 2;
+            _outRectY1 = minY - borderSize / 2;
+            _outRectX2 = maxX + borderSize / 2;
+            _outRectY2 = maxY + borderSize / 2;
+            _inRectX1 =  _outRectX1 + borderSize;
+            _inRectY1 = _outRectY1 + borderSize;
+            _inRectX2 = _outRectX2 - borderSize;
+            _inRectY2 = _outRectY2 - borderSize;
+        }
+        public override void Update(int x, int y)
+        {
+            int diffX = x - _X;
+            int diffY = y - _Y;
+
+            _X1 += diffX;
+            _Y1 += diffY;
+            _X2 += diffX;
+            _Y2 += diffY;
+            _X3 += diffX;
+            _Y3 += diffY;
+            _outRectX1 += diffX;
+            _outRectY1 += diffY;
+            _outRectX2 += diffX;
+            _outRectY2 += diffY;
+            _inRectX1 += diffX;
+            _inRectY1 += diffY;
+            _inRectX2 += diffX;
+            _inRectY2 += diffY;
         }
     }
 }

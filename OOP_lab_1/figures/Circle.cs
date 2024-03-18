@@ -4,28 +4,31 @@ namespace OOP_lab_1
 {
     public class Circle : DisplayObject
     {
-        private readonly int _X2;
-        private readonly int _Y2;
         public override void Draw(Graphics g)
         {
-            using (var pen = new Pen(_borderColor, _borderSize))
+            Color fillColor = Color.FromArgb(_fillColor[0], _fillColor[1], _fillColor[2]);
+            Color borderColor = Color.FromArgb(_borderColor[0], _borderColor[1], _borderColor[2]);
+            using (var pen = new Pen(borderColor, _borderSize))
             {
-                using (var brush = new SolidBrush(_fillColor))
+                using (var brush = new SolidBrush(fillColor))
                 {
                     g.FillEllipse(brush, _X1, _Y1, _X2 - _X1, _X2 - _X1);
                     g.DrawEllipse(pen, _X1, _Y1, _X2 - _X1, _X2 - _X1);
                 }
             }
         }
-        
-        public Circle(int x1, int y1, Color fillColor, Color borderColor, int borderSize, int radius) : base(x1, y1, fillColor, borderColor, borderSize)
+        public Circle(int X, int Y,int x1, int y1, int[] fillColor, int[] borderColor, int borderSize, int radius) : base(X, Y,x1, y1, fillColor, borderColor, borderSize)
         {
             _X2 = x1 + 2 * radius;
             _Y2 = y1 + 2 * radius;
-            _rectX1 = _X1 - borderSize / 2;
-            _rectY1 = _Y1 - borderSize / 2;
-            _rectX2 = _X1 + 2 * radius + borderSize / 2;
-            _rectY2 = _Y1 + 2 * radius + borderSize / 2;
+            _outRectX1 = _X1 - borderSize / 2;
+            _outRectY1 = _Y1 - borderSize / 2;
+            _outRectX2 = _X1 + 2 * radius + borderSize / 2;
+            _outRectY2 = _Y1 + 2 * radius + borderSize / 2;
+            _inRectX1 =  _outRectX1 + borderSize;
+            _inRectY1 = _outRectY1 + borderSize;
+            _inRectX2 = _outRectX2 - borderSize;
+            _inRectY2 = _outRectY2 - borderSize;
         }
     }
 }
