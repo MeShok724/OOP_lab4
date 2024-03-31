@@ -4,8 +4,9 @@ namespace OOP_lab_1
 {
     public class IsoscelesTriangle : DisplayObject
     {
-        private int _X3;
-        private int _Y3;
+        protected int _X1, _Y1;
+        protected int _X2, _Y2;
+        protected int _X3, _Y3;
         override public void Draw(Graphics g)
         {
             Color fillColor = Color.FromArgb(_fillColor[0], _fillColor[1], _fillColor[2]);
@@ -20,8 +21,10 @@ namespace OOP_lab_1
             }
         }
         
-        public IsoscelesTriangle(int X, int Y, int x1, int y1, int[] fillColor, int[] borderColor, int borderSize, int width, int height) : base(X, Y, x1, y1, fillColor, borderColor, borderSize)
+        public IsoscelesTriangle(int X, int Y, int x1, int y1, int[] fillColor, int[] borderColor, int borderSize, int width, int height) : base(X, Y, fillColor, borderColor, borderSize)
         {
+            _X1 = x1;
+            _Y1 = y1;
             _outRectX1 = _X1 - width / 2 - borderSize / 2;
             _outRectY1 = _Y1 - borderSize / 2;
             _outRectX2 = _X1 + width / 2 + borderSize / 2;

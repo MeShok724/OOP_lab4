@@ -5,9 +5,11 @@ namespace OOP_lab_1
 {
     public class Section : DisplayObject
     {
-        private int _diffX;
-        private int _diffY;
-        private readonly int _width;
+        protected int _X1, _Y1;
+        protected int _X2, _Y2;
+        protected int _diffX;
+        protected int _diffY;
+        protected readonly int _width;
 
         override public void Draw(Graphics g)
         {
@@ -43,8 +45,10 @@ namespace OOP_lab_1
             }
         }
         
-        public Section(int X, int Y, int x1, int y1, int[] fillColor, int[] borderColor, int borderSize, int x2, int y2, int width) : base(X, Y, x1, y1, fillColor, borderColor, borderSize)
+        public Section(int X, int Y, int x1, int y1, int[] fillColor, int[] borderColor, int borderSize, int x2, int y2, int width) : base(X, Y, fillColor, borderColor, borderSize)
         {
+            _X1 = x1;
+            _Y1 = y1;
             _X2 = x2;
             _Y2 = y2;
             _outRectX1 = Math.Min(_X1, _X2) - borderSize / 2;
@@ -57,6 +61,23 @@ namespace OOP_lab_1
             _inRectY2 = _outRectY2 - borderSize;
             _width = width;
             FindDiff();
+        }
+        public override void Update(int x, int y)
+        {
+            int diffX = x - _X;
+            int diffY = y - _Y;
+            _X1 += diffX;
+            _Y1 += diffY;
+            _X2 += diffX;
+            _Y2 += diffY;
+            _outRectX1 += diffX;
+            _outRectY1 += diffY;
+            _outRectX2 += diffX;
+            _outRectY2 += diffY;
+            _inRectX1 += diffX;
+            _inRectY1 += diffY;
+            _inRectX2 += diffX;
+            _inRectY2 += diffY;
         }
     }
 }

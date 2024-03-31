@@ -5,8 +5,9 @@ namespace OOP_lab_1
 {
     public class Triangle : DisplayObject
     {
-        private int _X3;
-        private int _Y3;
+        protected int _X1, _Y1;
+        protected int _X2, _Y2;
+        protected int _X3, _Y3;
         
         override public void Draw(Graphics g)
         {
@@ -22,8 +23,10 @@ namespace OOP_lab_1
             }
         }
         
-        public Triangle(int X, int Y, int x1, int y1, int[] fillColor, int[] borderColor, int borderSize, int x2, int y2, int x3, int y3) : base(X, Y, x1, y1, fillColor, borderColor, borderSize)
+        public Triangle(int X, int Y, int x1, int y1, int[] fillColor, int[] borderColor, int borderSize, int x2, int y2, int x3, int y3) : base(X, Y, fillColor, borderColor, borderSize)
         {
+            _X1 = x1;
+            _Y1 = y1;
             _X2 = x2;
             _Y2 = y2;
             _X3 = x3;

@@ -5,8 +5,9 @@ namespace OOP_lab_1
 {
     public class EquilateralTriangle : DisplayObject
     {
-        private int _X3;
-        private int _Y3;
+        protected int _X1, _Y1;
+        protected int _X2, _Y2;
+        protected int _X3, _Y3;
         override public void Draw(Graphics g)
         {
             Color fillColor = Color.FromArgb(_fillColor[0], _fillColor[1], _fillColor[2]);
@@ -21,9 +22,15 @@ namespace OOP_lab_1
             }
         }
         
-        public EquilateralTriangle(int X, int Y,int x1, int y1, int[] fillColor, int[] borderColor, int borderSize, int side) : base(X, Y, x1, y1, fillColor, borderColor, borderSize)
+        public EquilateralTriangle(int X, int Y,int x1, int y1, int[] fillColor, int[] borderColor, int borderSize, int side) : base(X, Y, fillColor, borderColor, borderSize)
         { 
             int height = (int)Math.Round(side * Math.Sqrt(3) / 2);
+            _X1 = x1;
+            _Y1 = y1;
+            _X2 = _X1 - side / 2;
+            _X3 = _X1 + side / 2;
+            _Y2 = _Y1 + height;
+            _Y3 = _Y2;
             _outRectX1 = _X1 - side / 2 - borderSize / 2;
             _outRectY1 = _Y1 - borderSize / 2;
             _outRectX2 = _X1 + side / 2 + borderSize / 2;
@@ -32,10 +39,6 @@ namespace OOP_lab_1
             _inRectY1 = _outRectY1 + borderSize;
             _inRectX2 = _outRectX2 - borderSize;
             _inRectY2 = _outRectY2 - borderSize;
-            _X2 = _X1 - side / 2;
-            _X3 = _X1 + side / 2;
-            _Y2 = _Y1 + height;
-            _Y3 = _Y2;
         }
 
         public override void Update(int x, int y)

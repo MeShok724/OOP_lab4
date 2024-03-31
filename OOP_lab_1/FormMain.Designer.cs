@@ -29,35 +29,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pbDrawField = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pbDrawField)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pbDrawField
-            // 
-            this.pbDrawField.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbDrawField.Location = new System.Drawing.Point(0, 0);
-            this.pbDrawField.Name = "pbDrawField";
-            this.pbDrawField.Size = new System.Drawing.Size(1178, 744);
-            this.pbDrawField.TabIndex = 0;
-            this.pbDrawField.TabStop = false;
-            this.pbDrawField.Click += new System.EventHandler(this.pbDrawField_Click);
             // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1178, 744);
-            this.Controls.Add(this.pbDrawField);
-            this.MaximumSize = new System.Drawing.Size(1200, 800);
-            this.MinimumSize = new System.Drawing.Size(1200, 800);
+            this.ClientSize = new System.Drawing.Size(978, 644);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.pbDrawField)).EndInit();
+            this.Click += new System.EventHandler(this.FormMain_Click);
+            this.Resize += new System.EventHandler(this.FormMain_Resize);
             this.ResumeLayout(false);
         }
-
-        private System.Windows.Forms.PictureBox pbDrawField;
 
         #endregion
     }
