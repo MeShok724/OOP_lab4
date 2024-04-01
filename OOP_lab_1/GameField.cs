@@ -31,7 +31,7 @@ namespace OOP_lab_1
             int y2 = rand.Next(minY, maxY);
             Circle f1 = new Circle(x, y,  x, y, new int[] {rand.Next(255), rand.Next(255), rand.Next(255)},
                 new int[] {rand.Next(255), rand.Next(255), rand.Next(255)}, rand.Next(minB, maxB),
-                rand.Next(10,100));
+                rand.Next(10,50));
             arrObj[index] = f1;
         }
         private static void AddEllipse(int index, int minX, int minY, int maxX, int maxY, int minB, int maxB, DisplayObject[] arrObj, Random rand)
@@ -40,7 +40,7 @@ namespace OOP_lab_1
             int y = rand.Next(minY, maxY);
             Ellipse f1 = new Ellipse(x, y, x, y, new int[] {rand.Next(255), rand.Next(255), rand.Next(255)},
                 new int[] {rand.Next(255), rand.Next(255), rand.Next(255)}, rand.Next(1, 10),
-                rand.Next(10, 100), rand.Next(10,100));
+                rand.Next(10, 50), rand.Next(10,50));
             arrObj[index] = f1;
         }
         private static void AddEquilateralTriangle(int index, int minX, int minY, int maxX, int maxY, int minB, int maxB, DisplayObject[] arrObj, Random rand)
@@ -113,12 +113,12 @@ namespace OOP_lab_1
             const int maxB = 10;
 
             int border = 10;
-            GameField gameField = new GameField(border/2, border/2,border/2, border/2, new int[] {rand.Next(255), rand.Next(255), rand.Next(255)}, new int[] {rand.Next(255), rand.Next(255), rand.Next(255)}, border, width - border, height - border);
+            GameField gameField = new GameField(minX + border/2, minY + border/2,minX + border/2, minY + border/2, new int[] {rand.Next(255), rand.Next(255), rand.Next(255)}, new int[] {rand.Next(255), rand.Next(255), rand.Next(255)}, border, width - 2*border, height - 2*border);
             gameField.arr = new DisplayObject[10 * 8];
-            minX += border / 2;
-            minY += border / 2;
-            maxX -= border;
-            maxY -= border;
+            minX += border + 50;
+            minY += border + 50;
+            maxX = maxX - border - 100;
+            maxY = maxY - border - 100;
             
             for (int i = 0; i < 10; i++)
             {

@@ -1,21 +1,32 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace OOP_lab_1
 {
     public partial class FormMain : Form
     {
+        static public Pen _pen;
+        public int borderSizeWindow = 10;
         public Graphics g;
         private int width;
         private int height;
         private GameField _gameField;
-        
+        public static void DrawBorder(Form form, Graphics graphics)
+        {
+            graphics.DrawRectangle(_pen, form.ClientRectangle);
+        }
         public FormMain()
         {
             InitializeComponent();
-            width = Width;
-            height = Height;
+            width = ClientSize.Width - borderSizeWindow;
+            height = ClientSize.Height - borderSizeWindow;
+            // this.FormBorderStyle = FormBorderStyle.Sizable;
+            // this.DesktopBounds = new System.Drawing.Rectangle(0, 0,  DesktopBounds.Width+10,  DesktopBounds.Height+10);
+            _pen = new Pen(Color.White, borderSizeWindow) { Alignment = PenAlignment.Inset };
+            g = this.CreateGraphics();
         }
         
         private void DrawObjects(GameField drField, Graphics graphic)
@@ -30,10 +41,10 @@ namespace OOP_lab_1
         private void FormMain_Resize(object sender, EventArgs e)
         {
             g = this.CreateGraphics();
-            int newX = Width - width;
-            int newY = Height - height;
-            width = Width;
-            height = Height;
+            int newX = ClientSize.Width - borderSizeWindow - width;
+            int newY = ClientSize.Height - borderSizeWindow - height;
+            width = ClientSize.Width - borderSizeWindow;
+            height = ClientSize.Height - borderSizeWindow;
             if (_gameField != null)
             {
                 _gameField.Update(_gameField.GetX + newX, _gameField.GetY + newY);
@@ -42,22 +53,34 @@ namespace OOP_lab_1
                     var temp = _gameField.arr[i];
                     temp.Update(newX + temp.GetX, newY + temp.GetY);
                 }
-                g.Clear(Color.White);
+                g.Clear(Color.FromArgb(240,240,240));
                 DrawObjects(_gameField, g);
             }
+            DrawBorder(this, g);
         }
 
         private void FormMain_Click(object sender, EventArgs e)
         {
             g = this.CreateGraphics();
-            g.Clear(Color.White);
-            const int minX = 20;
-            const int minY = 20;
-            int maxX = this.ClientSize.Width;
-            int maxY = this.ClientSize.Height;
-            GameField gameField = GameField.GenerateObjects(this.ClientSize.Width, this.ClientSize.Height, minX, minY, maxX, maxY);
+            g.Clear(Color.FromArgb(240,240,240));
+            int minX = borderSizeWindow;
+            int minY = borderSizeWindow;
+            int maxX = this.ClientSize.Width - borderSizeWindow;
+            int maxY = this.ClientSize.Height - borderSizeWindow;
+            GameField gameField = GameField.GenerateObjects(width - 200, height - 200, minX + 200, minY + 200, maxX, maxY);
             _gameField = gameField;
             DrawObjects(gameField, g);
+            DrawBorder(this, g);
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void FormMain_Paint(object sender, PaintEventArgs e)
+        {
+            DrawBorder(this, g);
         }
     }
 }
