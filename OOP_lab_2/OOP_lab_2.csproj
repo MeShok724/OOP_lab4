@@ -47,6 +47,7 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="DisplayObject.cs" />
+        <Compile Include="Game.cs" />
         <Compile Include="GameField.cs" />
         <Compile Include="figures\Circle.cs" />
         <Compile Include="figures\EquilateralTriangle.cs" />

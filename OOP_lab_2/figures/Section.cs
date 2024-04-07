@@ -31,7 +31,10 @@ namespace OOP_lab_1
             double k = Math.Round(dist / _borderSize);
             _diffX = (int)Math.Round((_X2 - _X1) / k);
             _diffY = (int)Math.Round((_Y2 - _Y1) / k);
-            
+            if (_diffX == int.MinValue)
+                _diffX += 1;
+            if (_diffY == int.MinValue)
+                _diffY += 1;
             //?
             _diffX = Math.Abs(_diffX);
             _diffY = Math.Abs(_diffY);
@@ -45,7 +48,7 @@ namespace OOP_lab_1
             }
         }
         
-        public Section(int X, int Y, int x1, int y1, int[] fillColor, int[] borderColor, int borderSize, int x2, int y2, int width) : base(X, Y, fillColor, borderColor, borderSize)
+        public Section(int X, int Y,int x1, int y1,  int speed, double speedCorner, int boost, double boostCorner, int[] fillColor, int[] borderColor, int borderSize, int x2, int y2, int width) : base(X, Y,fillColor, borderColor, borderSize, speed, speedCorner, boost, boostCorner)
         {
             _X1 = x1;
             _Y1 = y1;
@@ -66,6 +69,8 @@ namespace OOP_lab_1
         {
             int diffX = x - _X;
             int diffY = y - _Y;
+            _X = x;
+            _Y = y;
             _X1 += diffX;
             _Y1 += diffY;
             _X2 += diffX;

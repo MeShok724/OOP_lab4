@@ -23,7 +23,7 @@ namespace OOP_lab_1
             }
         }
         
-        public Triangle(int X, int Y, int x1, int y1, int[] fillColor, int[] borderColor, int borderSize, int x2, int y2, int x3, int y3) : base(X, Y, fillColor, borderColor, borderSize)
+        public Triangle(int X, int Y,int x1, int y1,  int speed, double speedCorner, int boost, double boostCorner, int[] fillColor, int[] borderColor, int borderSize, int x2, int y2, int x3, int y3) : base(X, Y,fillColor, borderColor, borderSize, speed, speedCorner, boost, boostCorner)
         {
             _X1 = x1;
             _Y1 = y1;
@@ -50,6 +50,8 @@ namespace OOP_lab_1
         {
             int diffX = x - _X;
             int diffY = y - _Y;
+            _X = x;
+            _Y = y;
 
             _X1 += diffX;
             _Y1 += diffY;

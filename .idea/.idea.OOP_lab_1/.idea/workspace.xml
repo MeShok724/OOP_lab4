@@ -7,7 +7,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="51f82e97-ac54-46d3-849a-cbeb954283ec" name="Changes" comment="" />
+    <list default="true" id="51f82e97-ac54-46d3-849a-cbeb954283ec" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/OOP_lab_2/Game.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OOP_lab_1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OOP_lab_1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OOP_lab_2/OOP_lab_2.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/OOP_lab_2/OOP_lab_2.csproj" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -134,6 +138,7 @@
       <workItem from="1711916480862" duration="608000" />
       <workItem from="1711954966844" duration="8442000" />
       <workItem from="1711966690503" duration="732000" />
+      <workItem from="1711988214957" duration="1345000" />
     </task>
     <task id="LOCAL-00001" summary="drawing objects">
       <option name="closed" value="true" />
@@ -231,7 +236,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711965584704</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="init">
+      <option name="closed" value="true" />
+      <created>1711988339115</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1711988339115</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -251,6 +264,7 @@
     <MESSAGE value="added points user field, added methods to add and delete objects in array, added method Update" />
     <MESSAGE value="Game field inherited from rectangle, X1 X2 in child classes, GameField moving behind right bottom corner of the window" />
     <MESSAGE value="РАМКА" />
-    <option name="LAST_COMMIT_MESSAGE" value="РАМКА" />
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
 </project>
