@@ -12,6 +12,7 @@ namespace OOP_lab_1
         private Timer gameTimer;
         public Graphics g;
         public Graphics g1;
+        private bool isSubscribed = true;
         
         public int borderSizeWindow = 10;
         private Bitmap backBuffer;
@@ -61,6 +62,7 @@ namespace OOP_lab_1
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+            FormBorderStyle = FormBorderStyle.Sizable;
             g = this.CreateGraphics();
             backBuffer = new Bitmap(pbDraw.Width, pbDraw.Height);
             g1 = Graphics.FromImage(backBuffer);
@@ -72,7 +74,7 @@ namespace OOP_lab_1
             int minSpeed = 80;
             int maxSpeed = 100;
             int maxBoost = 20;
-            GameField gameField = GameField.GenerateObjects(maxX, maxY, 0, 0, maxX, maxY, minSpeed, maxSpeed, maxBoost);
+            GameField gameField = GameField.GenerateTwoCircles(maxX, maxY, 0, 0, maxX, maxY, minSpeed, maxSpeed, maxBoost);
 
             game = new Game(gameField, minX, minY, maxX, maxY, minSpeed, maxSpeed, maxBoost);
             game.DrawObjects(g1);
@@ -85,7 +87,35 @@ namespace OOP_lab_1
         }
         public static void DrawBorder(Form form, Graphics graphics)
         {
-            graphics.DrawRectangle(_pen, form.ClientRectangle);
+            // graphics.DrawRectangle(_pen, form.ClientRectangle);
+        }
+        
+        void SubscribeToGameTick()
+        {
+            isSubscribed = true;
+            gameTimer.Tick += GameTimer_Tick;
+            game.UpdateTime();
+        }
+
+        void UnsubscribeFromGameTick()
+        {
+            gameTimer.Tick -= GameTimer_Tick;
+            isSubscribed = false;
+        }
+
+        private void FormMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Space)
+            {
+                if (isSubscribed)
+                {
+                    UnsubscribeFromGameTick();
+                }
+                else
+                {
+                    SubscribeToGameTick();
+                }
+            }
         }
     }
 }

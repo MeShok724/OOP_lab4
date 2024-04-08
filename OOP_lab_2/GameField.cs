@@ -137,6 +137,38 @@ int boostCorner = rand.Next(maxCorner);
                 rand.Next(pMinX, pMaxX), rand.Next(pMinY, pMaxY), rand.Next(pMinX, pMaxX), rand.Next(pMinY, pMaxY));
             arrObj[index] = f1;
         }
+
+        public static GameField GenerateTwoCircles(int width, int height, int minX, int minY, int maxX, int maxY,
+            int minSpeed, int maxSpeed, int maxBoost)
+        {
+            int index = 0;  //индекс для заполнения массива фигурами
+            Random rand = new Random();
+            int numObj = 3;
+            double corner1 = 0;
+            double corner2 = (270 + 45)*Math.PI / 180;
+            int radius = 45;
+            int borderR = 10;
+            int speed = 40;
+            int boost = 10;
+            int border = 10;
+            int x = minX + border + borderR/2;
+            int y = maxY - radius * 2 - borderR/2 - border;
+            int xCent = x + borderR / 2 + radius;
+            int yCent = y + borderR / 2 + radius;
+            
+            GameField gameField = new GameField(minX + border/2, minY + border/2,minX + border/2, minY + border/2,
+                0, 0, 0, 0, new int[] {rand.Next(255), rand.Next(255), rand.Next(255)}, 
+                new int[] {rand.Next(255), rand.Next(255), rand.Next(255)},
+                border, maxX - minX - border, maxY - minY - border);
+            gameField.arr = new DisplayObject[numObj];
+            gameField.arr[0] = new Circle(xCent, yCent, x, y, speed, corner1, boost, corner1, new int[] { 255, 255, 255 },
+                new int[] { 255, 0, 0 }, borderR, radius);
+            gameField.arr[1] = new Circle(xCent, yCent, x, y, speed, corner2, boost, corner2, new int[] { 255, 255, 255 },
+                new int[] { 255, 0, 0 }, borderR, radius);
+            gameField.arr[2] = new Circle(xCent, yCent, x, y, 0, corner2, 0, corner2, new int[] { 255, 255, 255 },
+                new int[] { 255, 0, 0 }, borderR, radius);
+            return gameField;
+        }
         
         public static GameField GenerateObjects(int width, int height, int minX, int minY, int maxX, int maxY , int minSpeed, int maxSpeed, int maxBoost)
         {

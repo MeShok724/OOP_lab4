@@ -35,6 +35,7 @@
             // 
             // pbDraw
             // 
+            this.pbDraw.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.pbDraw.Location = new System.Drawing.Point(13, 13);
             this.pbDraw.Name = "pbDraw";
             this.pbDraw.Size = new System.Drawing.Size(986, 618);
@@ -53,6 +54,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.FormMain_Paint);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormMain_KeyDown);
             this.Resize += new System.EventHandler(this.FormMain_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pbDraw)).EndInit();
             this.ResumeLayout(false);

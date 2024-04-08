@@ -10,8 +10,8 @@ namespace OOP_lab_1
         private int _maxX, _maxY;
         const int minB = 1;
         const int maxB = 10;
-         int minSpeed = 30;
-         int maxSpeed = 50;
+        int minSpeed = 30;
+        int maxSpeed = 50;
         const int minBoost = 0;
         int maxBoost = 3;
         const int maxCorner = 360;
@@ -90,7 +90,15 @@ namespace OOP_lab_1
                     GameField.AddEllipse(index, _minX, _minY, _maxX, _maxY, minB, maxB, minSpeed, maxSpeed, maxBoost, maxCorner, _gameField.arr, rand);
                     return;
             }
-            return;
+        }
+
+        public void UpdateTime()
+        {
+            foreach (var i in _gameField.arr)
+            {
+                i._createTime = DateTime.Now.Hour * 3600 + DateTime.Now.Minute * 60 + DateTime.Now.Second + DateTime.Now.Millisecond * 0.001;
+                i.SetStartPos(i.GetX, i.GetY);
+            }
         }
     }
 }

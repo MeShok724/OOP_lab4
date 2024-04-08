@@ -5,12 +5,12 @@ namespace OOP_lab_1
 {
     public abstract class DisplayObject
     {
-        protected double _createTime;
-        protected int _speed = 10;
-        protected double _speedCorner = 0.5;
-        protected int _boost = 10;
-        protected double _boostCorner = 0.5;
-        protected readonly int _XStart, _YStart;   // точка создания 
+        public double _createTime;
+        protected int _speed;
+        protected double _speedCorner;
+        protected int _boost;
+        protected double _boostCorner ;
+        protected int _XStart, _YStart;   // точка создания 
         protected int _X, _Y;   // точка привзки
         protected int _outRectX1, _outRectY1;  // верхняя левая точка с учетом рамки
         protected int _outRectX2, _outRectY2;  // нижняя правая точка с учетом рамки
@@ -22,7 +22,7 @@ namespace OOP_lab_1
         public abstract void Draw(Graphics g);
         protected DisplayObject(int x, int y, int[] fillColor, int[] borderColor, int borderSize, int speed, double speedCorner, int boost, double boostCorner)
         {
-            _createTime = DateTime.Now.Minute*60 + DateTime.Now.Second + DateTime.Now.Millisecond*0.001;
+            _createTime = DateTime.Now.Hour*3600 + DateTime.Now.Minute*60 + DateTime.Now.Second + DateTime.Now.Millisecond*0.001;
             _X = x;
             _Y = y;
             _XStart = x;
@@ -54,7 +54,7 @@ namespace OOP_lab_1
 
         public void Move()
         {
-            double currTime = DateTime.Now.Minute*60 + DateTime.Now.Second + DateTime.Now.Millisecond*0.001;
+            double currTime = DateTime.Now.Hour*3600 + DateTime.Now.Minute*60 + DateTime.Now.Second + DateTime.Now.Millisecond*0.001;
             double diffTime = currTime - _createTime;
             double speedX = _speed * Math.Cos(_speedCorner);
             double speedY = _speed * Math.Sin(_speedCorner);
@@ -67,10 +67,19 @@ namespace OOP_lab_1
 
         public bool BehindTheField(int minX, int minY, int maxX, int maxY)
         {
-            return _X <= minX || _X >= maxX || _Y <= minY || _Y >= maxY;
+            return _X < minX || _X > maxX || _Y < minY || _Y > maxY;
         }
+        
+        
+        
 
         public int GetX => _X;
         public int GetY => _Y;
+
+        public void SetStartPos(int x, int y)
+        {
+            _XStart = x;
+            _YStart = y;
+        }
     }
 }
