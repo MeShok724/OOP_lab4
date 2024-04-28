@@ -4,7 +4,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
-namespace OOP_lab_1
+namespace OOP_lab_4
 {
     public partial class FormMain : Form
     {
@@ -74,9 +74,16 @@ namespace OOP_lab_1
             int minSpeed = 80;
             int maxSpeed = 100;
             int maxBoost = 20;
-            GameField gameField = GameField.GenerateTwoCircles(maxX, maxY, 0, 0, maxX, maxY, minSpeed, maxSpeed, maxBoost);
+            int circleCount = 30;
+            int gameFieldBorder = 10;
+            GameField gameField = GameField.GenerateCircles(circleCount, maxX, maxY, 0, 0, maxX, maxY, minSpeed, maxSpeed, maxBoost, gameFieldBorder);
+            if (gameField == null)
+            {
+                MessageBox.Show("Не удалось разместить все круги на игровом поле");
+                throw new Exception();
+            }
 
-            game = new Game(gameField, minX, minY, maxX, maxY, minSpeed, maxSpeed, maxBoost);
+            game = new Game(gameField, minX, minY, maxX, maxY, minSpeed, maxSpeed, maxBoost, gameFieldBorder);
             game.DrawObjects(g1);
             DrawBorder(this, g);
             

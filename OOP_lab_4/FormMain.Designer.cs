@@ -1,4 +1,4 @@
-﻿namespace OOP_lab_1
+﻿namespace OOP_lab_4
 {
     partial class FormMain
     {

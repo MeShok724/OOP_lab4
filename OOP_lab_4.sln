@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP_lab_2", "OOP_lab_2\OOP_lab_2.csproj", "{1FAF8A20-A0E6-404F-960E-54F31FA9422A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP_lab_4", "OOP_lab_4\OOP_lab_4.csproj", "{1FAF8A20-A0E6-404F-960E-54F31FA9422A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace OOP_lab_1.Properties
+namespace OOP_lab_4.Properties
 {
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
@@ -45,7 +45,7 @@ namespace OOP_lab_1.Properties
                 if ((resourceMan == null))
                 {
                     global::System.Resources.ResourceManager temp =
-                        new global::System.Resources.ResourceManager("OOP_lab_2.Properties.Resources",
+                        new global::System.Resources.ResourceManager("OOP_lab_4.Properties.Resources",
                             typeof(Resources).Assembly);
                     resourceMan = temp;
                 }

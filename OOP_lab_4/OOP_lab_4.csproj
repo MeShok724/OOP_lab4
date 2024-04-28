@@ -7,7 +7,7 @@
         <ProjectGuid>{1FAF8A20-A0E6-404F-960E-54F31FA9422A}</ProjectGuid>
         <OutputType>WinExe</OutputType>
         <RootNamespace>WindowsFormsApp1</RootNamespace>
-        <AssemblyName>OOP_lab_2</AssemblyName>
+        <AssemblyName>OOP_lab_4</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -63,7 +63,6 @@
         <Compile Include="FormMain.Designer.cs">
             <DependentUpon>FormMain.cs</DependentUpon>
         </Compile>
-        <Compile Include="MyPoint.cs" />
         <Compile Include="Program.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <EmbeddedResource Include="FormMain.resx">

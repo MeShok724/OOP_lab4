@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 
-namespace OOP_lab_1
+namespace OOP_lab_4
 {
     public class Section : DisplayObject
     {
@@ -48,7 +48,7 @@ namespace OOP_lab_1
             }
         }
         
-        public Section(int X, int Y,int x1, int y1,  int speed, double speedCorner, int boost, double boostCorner, int[] fillColor, int[] borderColor, int borderSize, int x2, int y2, int width) : base(X, Y,fillColor, borderColor, borderSize, speed, speedCorner, boost, boostCorner)
+        public Section(int X, int Y,int x1, int y1,  int speed, double angle, int boost, int[] fillColor, int[] borderColor, int borderSize, int x2, int y2, int width) : base(X, Y,fillColor, borderColor, borderSize, speed, angle, boost)
         {
             _X1 = x1;
             _Y1 = y1;

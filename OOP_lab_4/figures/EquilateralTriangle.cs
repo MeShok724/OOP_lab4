@@ -1,8 +1,9 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
-namespace OOP_lab_1
+namespace OOP_lab_4
 {
-    public class IsoscelesTriangle : DisplayObject
+    public class EquilateralTriangle : DisplayObject
     {
         protected int _X1, _Y1;
         protected int _X2, _Y2;
@@ -21,23 +22,25 @@ namespace OOP_lab_1
             }
         }
         
-        public IsoscelesTriangle(int X, int Y,int x1, int y1,  int speed, double speedCorner, int boost, double boostCorner, int[] fillColor, int[] borderColor, int borderSize, int width, int height) : base(X, Y,fillColor, borderColor, borderSize, speed, speedCorner, boost, boostCorner)
-        {
+        public EquilateralTriangle(int X, int Y,int x1, int y1,  int speed, double angle, int boost, int[] fillColor, int[] borderColor, int borderSize, int side) : base(X, Y,fillColor, borderColor, borderSize, speed, angle, boost)
+        { 
+            int height = (int)Math.Round(side * Math.Sqrt(3) / 2);
             _X1 = x1;
             _Y1 = y1;
-            _outRectX1 = _X1 - width / 2 - borderSize / 2;
+            _X2 = _X1 - side / 2;
+            _X3 = _X1 + side / 2;
+            _Y2 = _Y1 + height;
+            _Y3 = _Y2;
+            _outRectX1 = _X1 - side / 2 - borderSize / 2;
             _outRectY1 = _Y1 - borderSize / 2;
-            _outRectX2 = _X1 + width / 2 + borderSize / 2;
+            _outRectX2 = _X1 + side / 2 + borderSize / 2;
             _outRectY2 = _Y1 + height + borderSize / 2;
             _inRectX1 =  _outRectX1 + borderSize;
             _inRectY1 = _outRectY1 + borderSize;
             _inRectX2 = _outRectX2 - borderSize;
             _inRectY2 = _outRectY2 - borderSize;
-            _X2 = _X1 - width / 2;
-            _X3 = _X1 + width / 2;
-            _Y2 = _Y1 + height;
-            _Y3 = _Y2;
         }
+
         public override void Update(int x, int y)
         {
             int diffX = x - _X;
