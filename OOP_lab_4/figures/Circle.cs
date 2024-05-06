@@ -34,10 +34,14 @@ namespace OOP_lab_4
             _inRectX2 = _outRectX2 - borderSize;
             _inRectY2 = _outRectY2 - borderSize;
         }
-        public override void Update(int x, int y)
+        public override void MoveTo(int x, int y)
         {
             int diffX = x - _X;
             int diffY = y - _Y;
+            if (diffY == 0 && diffX == 0)
+            {
+                _speed += 1;
+            }
             _X = x;
             _Y = y;
             _X1 += diffX;

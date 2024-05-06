@@ -13,16 +13,17 @@ namespace OOP_lab_4
         public Graphics g;
         public Graphics g1;
         private bool isSubscribed = true;
+        private const int FPS = 60;
         
         public int borderSizeWindow = 10;
         private Bitmap backBuffer;
-        static public Pen _pen;
+        // static public Pen _pen;
         // private int width;
         // private int height;
         public FormMain()
         {
             InitializeComponent();
-            _pen = new Pen(Color.White, borderSizeWindow) { Alignment = PenAlignment.Inset };
+            // _pen = new Pen(Color.White, borderSizeWindow) { Alignment = PenAlignment.Inset };
         }
         private void GameTimer_Tick(object sender, EventArgs e)
         {
@@ -36,16 +37,6 @@ namespace OOP_lab_4
 
         private void FormMain_Resize(object sender, EventArgs e)
         {
-            
-            // g1 = pbDraw.CreateGraphics();
-            // int newX = ClientSize.Width - borderSizeWindow - width;
-            // int newY = ClientSize.Height - borderSizeWindow - height;
-            // width = ClientSize.Width - borderSizeWindow;
-            // height = ClientSize.Height - borderSizeWindow;
-            // if (game != null)
-            // {
-            //      game.UpdateAfterResize(newX, newY, g1);   
-            // }
             g = this.CreateGraphics();
             Invalidate();
         }
@@ -71,10 +62,10 @@ namespace OOP_lab_4
             int minY = 0;
             int maxX = pbDraw.Width;
             int maxY = pbDraw.Height;
-            int minSpeed = 80;
-            int maxSpeed = 100;
+            int minSpeed = 5;
+            int maxSpeed = 20;
             int maxBoost = 20;
-            int circleCount = 30;
+            int circleCount = 10;
             int gameFieldBorder = 10;
             GameField gameField = GameField.GenerateCircles(circleCount, maxX, maxY, 0, 0, maxX, maxY, minSpeed, maxSpeed, maxBoost, gameFieldBorder);
             if (gameField == null)
@@ -88,41 +79,13 @@ namespace OOP_lab_4
             DrawBorder(this, g);
             
             gameTimer = new Timer();
-            gameTimer.Interval = 1000/30;
+            gameTimer.Interval = 1000/FPS;
             gameTimer.Tick += GameTimer_Tick;
             gameTimer.Start();
         }
         public static void DrawBorder(Form form, Graphics graphics)
         {
             // graphics.DrawRectangle(_pen, form.ClientRectangle);
-        }
-        
-        void SubscribeToGameTick()
-        {
-            isSubscribed = true;
-            gameTimer.Tick += GameTimer_Tick;
-            game.UpdateTime();
-        }
-
-        void UnsubscribeFromGameTick()
-        {
-            gameTimer.Tick -= GameTimer_Tick;
-            isSubscribed = false;
-        }
-
-        private void FormMain_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Space)
-            {
-                if (isSubscribed)
-                {
-                    UnsubscribeFromGameTick();
-                }
-                else
-                {
-                    SubscribeToGameTick();
-                }
-            }
         }
     }
 }

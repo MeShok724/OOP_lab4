@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace OOP_lab_4
 {
@@ -15,8 +18,11 @@ namespace OOP_lab_4
         const int minBoost = 0;
         int maxBoost = 3;
         const int maxCorner = 360;
+        private const int threadcount = 4;
+        private Thread[] _threads = new Thread[threadcount];
 
-        public Game(GameField gameField, int minX, int minY, int maxX, int maxY, int minSpeed, int maxSpeed, int maxBoost, int gameFieldBorder)
+        public Game(GameField gameField, int minX, int minY, int maxX, int maxY, int minSpeed, int maxSpeed,
+            int maxBoost, int gameFieldBorder)
         {
             this.minSpeed = minSpeed;
             this.maxSpeed = maxSpeed;
@@ -32,10 +38,11 @@ namespace OOP_lab_4
         {
             foreach (var i in _gameField.arr)
             {
-                i.Move();
-                i.CheckAndFixIntersects(_minX, _minY, _maxX, _maxY);
-                // COLLIZION
+                i.ProcCollBorders(_minX, _minY, _maxX, _maxY);
+                i.ProcCollObjects(_gameField.arr);
+                i.Update();
             }
+            // ThreadProcess();
         }
 
         public void DrawObjects(Graphics g)
@@ -47,25 +54,72 @@ namespace OOP_lab_4
             }
         }
 
-        public void UpdateAfterResize(int newX, int newY, Graphics g)
-        {
-            _gameField.Update(_gameField.GetX + newX, _gameField.GetY + newY);
-            for (int i = 0; i < _gameField.arr.Length; i++)
-            {
-                var temp = _gameField.arr[i];
-                temp.Update(newX + temp.GetX, newY + temp.GetY);
-            }
-            g.Clear(Color.FromArgb(240,240,240));
-            DrawObjects(g);
-        }
-        
-
         public void UpdateTime()
         {
             foreach (var i in _gameField.arr)
             {
-                i._createTime = DateTime.Now.Hour * 3600 + DateTime.Now.Minute * 60 + DateTime.Now.Second + DateTime.Now.Millisecond * 0.001;
+                i._createTime = DateTime.Now;
                 i.SetStartPos(i.GetX, i.GetY);
+            }
+        }
+
+        public void ThreadProcess()
+        {
+            int ballInThread = _gameField.arr.Length / threadcount;
+            int remaining = _gameField.arr.Length % threadcount;
+            // int indexStart = 0;
+            // int indexEnd = 0;
+
+            for (int l = 0; l < threadcount; l++)
+            {
+                Thread thread = new Thread(ThreadCheck);
+                thread.Start(l);
+            }
+
+            // for (int i = 0; i < threadcount; i++)
+            // {
+            //     indexStart = indexEnd;
+            //     indexEnd = indexStart + ballInThread;
+            //     if (remaining > 0)
+            //     {
+            //         indexEnd++;
+            //         remaining--;
+            //     }
+            //
+            //     _threads[i] = new Thread(()=>FuncThread(indexStart, indexEnd));
+            //     _threads[i].Start();
+            // }
+            // foreach (var i in _threads)
+            // {
+            //     i.Join();
+            // }
+        }
+
+        private void FuncThread(int start, int end)
+        {
+            for (int i = start; i < end; i++)
+            {
+                DisplayObject curr = _gameField.arr[i];
+                lock (curr._lockObject) // Блокировка обрабатываемого шара для остальных потоков
+                {
+                    curr.ProcCollBorders(_minX, _minY, _maxX, _maxY); // Обработка столкновения с границей
+                    curr.ProcCollObjects(_gameField.arr); // Обработка столкновений с другими шарами
+                    curr.Update(); // Перемещение объекта под действием скорости
+                }
+            }
+        }
+
+        public void ThreadCheck(object data)
+        {
+            for (int i = (int)data; i < (_gameField.arr.Length / threadcount) * ((int)data + 1); i++)
+            {
+                DisplayObject curr = _gameField.arr[i];
+                lock (curr._lockObject) // Блокировка обрабатываемого шара для остальных потоков
+                {
+                    curr.ProcCollBorders(_minX, _minY, _maxX, _maxY); // Обработка столкновения с границей
+                    curr.ProcCollObjects(_gameField.arr); // Обработка столкновений с другими шарами
+                    curr.Update(); // Перемещение объекта под действием скорости
+                }
             }
         }
     }
