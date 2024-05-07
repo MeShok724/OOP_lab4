@@ -67,8 +67,8 @@ namespace OOP_lab_4
         {
             int ballInThread = _gameField.arr.Length / threadcount;
             int remaining = _gameField.arr.Length % threadcount;
-            // int indexStart = 0;
-            // int indexEnd = 0;
+            int indexStart = 0;
+            int indexEnd = 0;
 
             for (int l = 0; l < threadcount; l++)
             {

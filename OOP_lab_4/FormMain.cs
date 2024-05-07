@@ -13,7 +13,7 @@ namespace OOP_lab_4
         public Graphics g;
         public Graphics g1;
         private bool isSubscribed = true;
-        private const int FPS = 60;
+        public static int FPS = 60;
         
         public int borderSizeWindow = 10;
         private Bitmap backBuffer;
@@ -62,10 +62,10 @@ namespace OOP_lab_4
             int minY = 0;
             int maxX = pbDraw.Width;
             int maxY = pbDraw.Height;
-            int minSpeed = 5;
-            int maxSpeed = 20;
+            int minSpeed = 100;
+            int maxSpeed = 150;
             int maxBoost = 20;
-            int circleCount = 10;
+            int circleCount = 20;
             int gameFieldBorder = 10;
             GameField gameField = GameField.GenerateCircles(circleCount, maxX, maxY, 0, 0, maxX, maxY, minSpeed, maxSpeed, maxBoost, gameFieldBorder);
             if (gameField == null)

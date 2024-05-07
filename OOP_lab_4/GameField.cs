@@ -21,7 +21,7 @@ namespace OOP_lab_4
             int x = rand.Next(minX + borderSize, maxX - borderSize*2 - radius*2);
             int y = rand.Next(minY + borderSize, maxY - borderSize*2 - radius*2);
             int speed = rand.Next(minSpeed, maxSpeed);
-            int boost = 0; //rand.Next(maxBoost);
+            int boost = rand.Next(maxBoost);
             int speedCornerGrad = rand.Next(maxCorner);
             double speedCorner = (speedCornerGrad) * Math.PI / 180;
             // int x2 = rand.Next(minX, maxX);
