@@ -247,10 +247,6 @@ namespace OOP_lab_4
         
         public void ChangeDir(int newSpeed, double newAngel)
         {
-            // dt = DateTime.Now.AddDays(1);
-            // side = -1;
-            // spX = anX;
-            // spY = anY;
             UpdateTime();
             _speed = newSpeed;
             _angle = newAngel;
@@ -258,9 +254,6 @@ namespace OOP_lab_4
             {
                 _angle += 2 * Math.PI;
             }
-            //spX += (int)alphaC*v0/1000;
-            //spY += (int)alphaS*v0/1000;
-            // move((appTime-DateTime.Now).Milliseconds/1000);
         }
         private void UpdateTime()
         {
@@ -366,8 +359,8 @@ namespace OOP_lab_4
             bool check = false;
             d1 = d2.AddMilliseconds(d1.Millisecond);
             int diff = (int)Math.Round((d1 - d2).TotalMilliseconds);
-            if (Math.Abs(diff) < range) 
-                check = true; check = true;
+            if (Math.Abs(diff) < range)                                                                                                                                                                                                                                                                                                                     check = true;
+                check = true;
             return check;
         }
     }

@@ -64,7 +64,7 @@ namespace OOP_lab_4
             int maxY = pbDraw.Height;
             int minSpeed = 100;
             int maxSpeed = 150;
-            int maxBoost = 20;
+            int maxBoost = 0;
             int circleCount = 20;
             int gameFieldBorder = 10;
             GameField gameField = GameField.GenerateCircles(circleCount, maxX, maxY, 0, 0, maxX, maxY, minSpeed, maxSpeed, maxBoost, gameFieldBorder);
@@ -74,7 +74,7 @@ namespace OOP_lab_4
                 throw new Exception();
             }
 
-            game = new Game(gameField, minX, minY, maxX, maxY, minSpeed, maxSpeed, maxBoost, gameFieldBorder);
+            game = new Game(gameField, minX, minY, maxX, maxY, gameFieldBorder);
             game.DrawObjects(g1);
             DrawBorder(this, g);
             

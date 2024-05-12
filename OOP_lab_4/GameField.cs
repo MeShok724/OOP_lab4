@@ -17,7 +17,7 @@ namespace OOP_lab_4
         public static bool AddCircle(int index, int minX, int minY, int maxX, int maxY, int minB, int maxB, int minSpeed, int maxSpeed, int maxBoost, int maxCorner, DisplayObject[] arrObj, Random rand, int recursionCount = 0)
         {
             int borderSize = rand.Next(minB, maxB);
-            int radius = rand.Next(10, 50);
+            int radius = rand.Next(25, 50);
             int x = rand.Next(minX + borderSize, maxX - borderSize*2 - radius*2);
             int y = rand.Next(minY + borderSize, maxY - borderSize*2 - radius*2);
             int speed = rand.Next(minSpeed, maxSpeed);
